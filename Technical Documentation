@@ -1,0 +1,56 @@
+PERBAKIN - Redevelopment
+
+1. Dashboard
+Main
+Member
+User Activity
+
+2. Data Master
+Bidang Tembak
+Cabang
+Club
+Jabatan
+Jenis Barang
+Unit Barang
+Barang
+Jenis Senjata
+Tipe Senjata
+Merk Senjata
+Caliber Senjata
+Provinsi
+Kota
+Gudang
+
+3. Inventory
+Inventaris General
+-List View Table
+-List View Detail
+-New Record Inventaris
+-Detail Inventaris
+-Manage Inventaris
+
+Inventaris Senjata
+-Inventaris Gudang Senjata
+-Inventaris Senjata Member
+
+4. Document Management System
+5. Membership
+-List View Table
+-List View Detail
+-New Record Member
+-Detail Member & Weapon
+-Manage Member (Edit & Terminate)
+-Recap Membership (Filter, Export PDF & Excel)
+
+6. User Management
+-Role & Access Management
+-User Master
+
+
+
+DB Design
+Schema : 
+1. MASTER_DATA (MD)
+2. USER_AUTHENTICATION (UA)
+3. DOCUMENT_MANAGEMENT_SYSTEM (DMS)
+4. INVENTORY (INV)
