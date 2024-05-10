@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MasterData\ShootingFieldController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth'])->group(function () {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::group(['prefix' => 'master-data'], function () {
+            Route::resource('md-shooting-field', ShootingFieldController::class);
+        });
+    });
+});
+
+require __DIR__ . '/auth.php';
