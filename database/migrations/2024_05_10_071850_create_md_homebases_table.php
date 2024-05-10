@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('md_homebases', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('name');
+            $table->string('address');
+            $table->string('phone');
+            $table->string('sk_code');
+            $table->date('sk_availability_date')->nullable();
+            $table->date('sk_termination_date')->nullable();
+            $table->integer('province');
+            $table->integer('city');
+            $table->integer('chairman')->nullable();
+            $table->integer('description')->nullable();
+            $table->string('organization_file')->nullable();
+            $table->string('management_file')->nullable();
+            $table->json('created_by');
+            $table->json('updated_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
