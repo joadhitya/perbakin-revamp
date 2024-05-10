@@ -51,6 +51,21 @@ Inventaris Senjata
 DB Design
 Schema : 
 1. MASTER_DATA (MD)
+SENAJATA
+md_shooting_fields
+md_weapon_caliber
+md_weapon_categories
+md_weapon_models
+md_weapon_brands
+md_weapon_brands
+md_homebases
+md_clubs
+md_locations
+md_provinces
+md_cities
+md_districts
+md_sub_districts
+
 2. USER_AUTHENTICATION (UA)
 3. DOCUMENT_MANAGEMENT_SYSTEM (DMS)
 4. INVENTORY (INV)
