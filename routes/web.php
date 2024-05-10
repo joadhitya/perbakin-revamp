@@ -22,6 +22,16 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::group(['prefix' => 'master-data'], function () {
             Route::resource('md-shooting-field', ShootingFieldController::class);
+            Route::resource('md-homebase', ShootingFieldController::class);
+            Route::resource('md-club', ShootingFieldController::class);
+            Route::resource('md-position', ShootingFieldController::class);
+            Route::resource('md-item-category', ShootingFieldController::class);
+            Route::resource('md-item-unit', ShootingFieldController::class);
+            Route::resource('md-item', ShootingFieldController::class);
+            Route::resource('md-weapon-caliber', ShootingFieldController::class);
+            Route::resource('md-weapon-category', ShootingFieldController::class);
+            Route::resource('md-weapon-model', ShootingFieldController::class);
+            Route::resource('md-weapon-brand', ShootingFieldController::class);
         });
     });
 });

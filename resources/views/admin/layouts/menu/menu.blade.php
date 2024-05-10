@@ -17,13 +17,49 @@
         </a>
 
         <ul class="collapse list-unstyled pl-4 w-100  @if (Request::segment(2) == 'master-data') show @endif" id="master-data">
+            @php
+                // $masterData = [
+                //     'Bidang Tembak',
+                //     'Cabang',
+                //     'Club',
+                //     'Jabatan',
+                //     'Jenis Barang',
+                //     'Unit Barang',
+                //     'Barang',
+                //     'Jenis Senjata',
+                //     'Tipe Senjata',
+                //     'Merk Senjata',
+                //     'Caliber Senjata',
+                //     'Provinsi',
+                //     'Kota',
+                //     'Gudang',
+                // ];
+                $masterData = [
+                    ['name' => 'Bidang Tembak', 'route' => 'md-shooting-field'],
+                    ['name' => 'Cabang', 'route' => 'md-homebase'],
+                    ['name' => 'Club', 'route' => 'md-club'],
+                    ['name' => 'Jabatan', 'route' => 'md-position'],
+                    ['name' => 'Jenis Barang', 'route' => 'md-item-category'],
+                    ['name' => 'Unit Barang', 'route' => 'md-item-unit'],
+                    ['name' => 'Barang', 'route' => 'md-item'],
+                    ['name' => 'Jenis Senjata', 'route' => 'md-weapon-category'],
+                    ['name' => 'Tipe Senjata', 'route' => 'md-weapon-model'],
+                    ['name' => 'Merk Senjata', 'route' => 'md-weapon-brand'],
+                    ['name' => 'Caliber Senjata', 'route' => 'md-weapon-caliber'],
+                    // ['name' => 'Provinsi', 'route' => 'provinsi'],
+                    // ['name' => 'Kota', 'route' => 'kota'],
+                    // ['name' => 'Gudang', 'route' => 'gudang'],
+                ];
+            @endphp
 
-            <li class="nav-item w-100">
-                <a class="nav-link @if (Request::segment(3) == 'category-field') active-label @endif"
-                    href="{{ route('md-shooting-field.index') }}">
-                    <span class="item-text">Bidang Tembak</span>
-                </a>
-            </li>
+            @foreach ($masterData as $md)
+                <li class="nav-item w-100">
+                    <a class="nav-link @if (Request::segment(3) == $md['route']) active-label @endif"
+                        href="{{ route($md['route'] . '.index') }}">
+                        <span class="item-text">{{ $md['name'] }}</span>
+                    </a>
+                </li>
+            @endforeach
         </ul>
     </li>
 </ul>
