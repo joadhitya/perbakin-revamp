@@ -3,10 +3,18 @@
 namespace App\Http\Controllers\Admin\MasterData;
 
 use App\Http\Controllers\Controller;
+use App\Services\MasterData\ShootingFieldService;
 use Illuminate\Http\Request;
 
 class ShootingFieldController extends Controller
 {
+
+    protected $shootingFieldService;
+
+    public function __construct(ShootingFieldService $shootingFieldService){
+        $this->shootingFieldService = $shootingFieldService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -20,7 +28,8 @@ class ShootingFieldController extends Controller
      */
     public function create()
     {
-        //
+        $data = $this->shootingFieldService->getDataTable();
+        return view('admin.master-data.shooting-field.display', ["data" => $data]);
     }
 
     /**
