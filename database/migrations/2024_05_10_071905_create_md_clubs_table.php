@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('md_clubs', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_homebase');
+            $table->integer('id_chairman');
+            $table->string('code');
+            $table->string('name');
+            $table->string('address');
+            $table->string('phone');
+            $table->integer('province');
+            $table->integer('city');
+            $table->integer('district');
+            $table->integer('sub_district');
+            $table->integer('description')->nullable();
+            $table->json('created_by');
+            $table->json('updated_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

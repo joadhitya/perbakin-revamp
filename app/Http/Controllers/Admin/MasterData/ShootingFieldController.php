@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\MasterData;
 
+use App\Helpers\GeneralHelper;
 use App\Http\Controllers\Controller;
 use App\Services\MasterData\ShootingFieldService;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class ShootingFieldController extends Controller
      */
     public function index()
     {
+        $id = GeneralHelper::generateNanoId();
         return view('admin.master-data.shooting-field.index');
     }
 
