@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\MasterData\ShootingFieldController;
+use App\Http\Controllers\Admin\Member\MemberController;
+use App\Http\Controllers\Admin\Member\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,11 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('md-weapon-category', ShootingFieldController::class);
             Route::resource('md-weapon-model', ShootingFieldController::class);
             Route::resource('md-weapon-brand', ShootingFieldController::class);
+        });
+        Route::group(['prefix' => 'member'], function () {
+            Route::resource('mb-member', MemberController::class);
+            Route::post('mb-member/activityDetail', [MemberController::class, 'activityDetail'])->name('member.activityDetail');
+            Route::resource('mb-organization', OrganizationController::class);
         });
     });
 });

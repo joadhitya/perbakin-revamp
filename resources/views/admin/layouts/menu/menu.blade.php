@@ -57,7 +57,8 @@
             <span class="ml-3 item-text">Data Master</span><span class="sr-only">(current)</span>
         </a>
 
-        <ul class="collapse list-unstyled pl-4 w-100  @if (Request::segment(2) == 'master-data-inventory') show @endif" id="master-data-inventory">
+        <ul class="collapse list-unstyled pl-4 w-100  @if (Request::segment(2) == 'master-data-inventory') show @endif"
+            id="master-data-inventory">
             @php
                 $masterDataInv = [
                     ['name' => 'Jenis Barang', 'route' => 'md-item-category'],
@@ -96,8 +97,8 @@
 <ul class="navbar-nav flex-fill w-100 mb-2">
     @php
         $managementMember = [
-            ['name' => 'Member', 'route' => 'md-shooting-field'],
-            ['name' => 'Struktur Organisasi', 'route' => 'md-homebase'],
+            ['name' => 'Member', 'route' => 'mb-member'],
+            ['name' => 'Struktur Organisasi', 'route' => 'mb-organization'],
             // ['name' => 'Provinsi', 'route' => 'provinsi'],
             // ['name' => 'Kota', 'route' => 'kota'],
             // ['name' => 'Gudang', 'route' => 'gudang'],
@@ -105,7 +106,8 @@
     @endphp
     @foreach ($managementMember as $mm)
         <li class="nav-item w-100">
-            <a class="nav-link @if (Request::segment(3) == 'inbox') active-label @endif" href="#">
+            <a class="nav-link @if (Request::segment(3) == 'inbox') active-label @endif"
+                href="{{ route($mm['route'] . '.index') }}">
                 <i class="fe fe-inbox fe-16"></i>
                 <span class="ml-3 item-text">{{ $mm['name'] }}</span>
             </a>

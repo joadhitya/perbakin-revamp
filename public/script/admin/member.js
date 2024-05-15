@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     displayData(`${url}/create`, data.url5);
 });
@@ -16,6 +17,40 @@ const getUrl = () => {
 
 const data = getUrl();
 const url = `/admin/${data.url4}/${data.url5}`;
+
+function openForm(target, type, id = null) {
+    const showData = $(`#show-data-${target}`);
+    const form = $(`#form-${target}`);
+    const create = $(`#create-${target}`);
+    const back = $(`#back-${target}`);
+    switch (type) {
+        case "add":
+            showData.hide();
+            form.show();
+            create.hide();
+            back.show();
+            $.ajax({
+                type: "post",
+                url: `${url}/activity-detail`,
+                data: {
+                    type,
+                    id
+                },
+                success: function (response) {
+                    console.log(response)
+                }, error: function (err) {
+                    console.log(err)
+                }
+            });
+            break;
+        case "back":
+            showData.show();
+            form.hide();
+            create.show();
+            back.hide();
+            break;
+    }
+}
 
 function openModal(target, type, id = null) {
     console.log('test');
