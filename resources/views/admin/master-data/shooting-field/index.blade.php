@@ -28,7 +28,7 @@
 
 
 @section('modal')
-    {{-- @include('admin.master-data.md-shooting-field.modal') --}}
+    @include('admin.master-data.shooting-field.modal')
 @endsection
 
 @push('page-scripts')
