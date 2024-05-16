@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('md_districts', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_city');
+            $table->string('name');
             $table->timestamps();
         });
     }

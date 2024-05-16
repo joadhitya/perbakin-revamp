@@ -37,7 +37,7 @@ function openForm(target, type, id = null) {
                     id
                 },
                 success: function (response) {
-                    console.log(response)
+                    form.html(response)
                 }, error: function (err) {
                     console.log(err)
                 }
