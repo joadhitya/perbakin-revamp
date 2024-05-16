@@ -37,6 +37,12 @@ class MemberController extends Controller
     }
     public function activityDetail(Request $request)
     {
+        extract($request->all());
+        switch ($type) {
+            case 'add':
+                return view('admin.member.membership.form');
+                break;
+        }
         // Handle the POST request logic here
     }
 }

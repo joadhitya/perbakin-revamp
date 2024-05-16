@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::group(['prefix' => 'member'], function () {
             Route::resource('mb-member', MemberController::class);
-            Route::post('mb-member/activityDetail', [MemberController::class, 'activityDetail'])->name('member.activityDetail');
+            Route::post('mb-member/activity-detail', [MemberController::class, 'activityDetail'])->name('member.activityDetail');
             Route::resource('mb-organization', OrganizationController::class);
         });
     });
