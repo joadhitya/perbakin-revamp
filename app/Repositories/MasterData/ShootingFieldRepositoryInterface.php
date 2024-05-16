@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Collection;
 interface ShootingFieldRepositoryInterface
 {
     public function getAllData(): Collection;
-    public function getDataByID(int $id): ShootingField;
-    public function createData(ShootingField $data): ShootingField;
-    public function updateData(ShootingField $data, $dataRequest): ShootingField;
+    public function getDataByID(int $id): ModelDelivery;
+    public function createData(ShootingField $data): ModelDelivery;
+    public function updateData(ShootingField $data, $dataRequest): ModelDelivery;
     public function deleteData(ShootingField $data): ModelDelivery;
 }

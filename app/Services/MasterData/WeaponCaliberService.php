@@ -2,62 +2,62 @@
 
 namespace App\Services\MasterData;
 
-use App\Models\MasterData\ShootingField;
-use App\Repositories\MasterData\ShootingFieldRepositoryInterface;
+use App\Models\MasterData\WeaponCaliber;
+use App\Repositories\MasterData\WeaponCaliberRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use App\Helpers\GeneralHelper;
 use App\Models\General\ModelDelivery;
 
-class ShootingFieldService
+class WeaponCaliberService
 {
-    private $shootingFieldRepo;
+    private $weaponCaliberRepo;
 
-    public function __construct(ShootingFieldRepositoryInterface $shootingFieldRepo)
+    public function __construct(WeaponCaliberRepositoryInterface $weaponCaliberRepo)
     {
-        $this->shootingFieldRepo = $shootingFieldRepo;
+        $this->weaponCaliberRepo = $weaponCaliberRepo;
     }
 
     public function getDataTable(): Collection
     {
-        return $this->shootingFieldRepo->getAllData();
+        return $this->weaponCaliberRepo->getAllData();
     }
 
-    public function createData(ShootingField $data): ModelDelivery
+    public function createData(WeaponCaliber $data): ModelDelivery
     {
         $data->fill([
             'code' => GeneralHelper::generateULID(),
             'created_by' => GeneralHelper::getAuthInfo(),
             'updated_by' => json_encode([]),
         ]);
-        $returnData = $this->shootingFieldRepo->createData($data);
+        $returnData = $this->weaponCaliberRepo->createData($data);
         return $returnData;
     }
 
     public function getData(int $id): ModelDelivery
     {
-        $data = $this->shootingFieldRepo->getDataByID($id);
+        $data = $this->weaponCaliberRepo->getDataByID($id);
         return $data;
     }
 
-    public function updateData(ShootingField $dataRequest, int $id): ModelDelivery
+    public function updateData(WeaponCaliber $dataRequest, int $id): ModelDelivery
     {
         $dataRequest->fill([
             'updated_by' => GeneralHelper::getAuthInfo(),
         ]);
-        $dataDB = $this->shootingFieldRepo->getDataByID($id);
+        $dataDB = $this->weaponCaliberRepo->getDataByID($id);
         if ($dataDB['error'] == true){
             return $dataDB;
         }
-        $data = $this->shootingFieldRepo->updateData($dataDB['data'], $dataRequest);
+        $data = $this->weaponCaliberRepo->updateData($dataDB['data'], $dataRequest);
         return $data;
     }
 
     public function deleteData(int $id): ModelDelivery {
-        $dataDB = $this->shootingFieldRepo->getDataByID($id);
+        $dataDB = $this->weaponCaliberRepo->getDataByID($id);
         if ($dataDB['error'] == true){
             return $dataDB;
         }
-        $data = $this->shootingFieldRepo->deleteData($dataDB['data']);
+        $data = $this->weaponCaliberRepo->deleteData($dataDB['data']);
         return $data;
     }
 

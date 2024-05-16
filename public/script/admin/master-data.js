@@ -178,6 +178,26 @@ function fetchData(target, data) {
             $("#name").val(data.name);
             $("#code").val(data.code);
             break;
+        case "md-weapon-caliber":
+            $("#id").val(data.id);
+            $("#name").val(data.name);
+            $("#code").val(data.code);
+            break;
+        case "md-weapon-category":
+            $("#id").val(data.id);
+            $("#name").val(data.name);
+            $("#code").val(data.code);
+            break;
+        case "md-weapon-model":
+            $("#id").val(data.id);
+            $("#name").val(data.name);
+            $("#code").val(data.code);
+            break;
+        case "md-weapon-brand":
+            $("#id").val(data.id);
+            $("#name").val(data.name);
+            $("#code").val(data.code);
+            break;
         default:
             break;
     }

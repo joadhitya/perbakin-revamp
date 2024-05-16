@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\MasterData\ShootingFieldController;
+use App\Http\Controllers\Admin\MasterData\WeaponBrandController;
+use App\Http\Controllers\Admin\MasterData\WeaponCaliberController;
+use App\Http\Controllers\Admin\MasterData\WeaponCategoryController;
+use App\Http\Controllers\Admin\MasterData\WeaponModelController;
 use App\Http\Controllers\Admin\Member\MemberController;
 use App\Http\Controllers\Admin\Member\OrganizationController;
 use App\Http\Controllers\ProfileController;
@@ -30,14 +34,14 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('md-item-category', ShootingFieldController::class);
             Route::resource('md-item-unit', ShootingFieldController::class);
             Route::resource('md-item', ShootingFieldController::class);
-            Route::resource('md-weapon-caliber', ShootingFieldController::class);
-            Route::resource('md-weapon-category', ShootingFieldController::class);
-            Route::resource('md-weapon-model', ShootingFieldController::class);
-            Route::resource('md-weapon-brand', ShootingFieldController::class);
+            Route::resource('md-weapon-caliber', WeaponCaliberController::class);
+            Route::resource('md-weapon-category', WeaponCategoryController::class);
+            Route::resource('md-weapon-model', WeaponModelController::class);
+            Route::resource('md-weapon-brand', WeaponBrandController::class);
         });
         Route::group(['prefix' => 'member'], function () {
             Route::resource('mb-member', MemberController::class);
-            Route::post('mb-member/activityDetail', [MemberController::class, 'activityDetail'])->name('member.activityDetail');
+            Route::post('mb-member/activity-detail', [MemberController::class, 'activityDetail'])->name('member.activityDetail');
             Route::resource('mb-organization', OrganizationController::class);
         });
     });
