@@ -12,5 +12,6 @@ class MasterDataSeeder extends Seeder
     {
         DB::statement((string) file_get_contents(database_path('raws/dev/md_provinces.sql')));
         DB::statement((string) file_get_contents(database_path('raws/dev/md_cities.sql')));
+        DB::statement((string) file_get_contents(database_path('raws/dev/md_districts.sql')));
     }
 }
