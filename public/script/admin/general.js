@@ -436,7 +436,7 @@ function handleExportExcel(section) {
     $.ajax({
         url: `${arr[5]}/export/excel`,
         method: "get",
-        xhrFields:{
+        xhrFields: {
             responseType: 'blob'
         },
         success: function (response) {
@@ -445,7 +445,7 @@ function handleExportExcel(section) {
             link.download = `registration-list.xlsx`;
             link.click();
         },
-        error:function (err){
+        error: function (err) {
             console.log(err);
         }
     });

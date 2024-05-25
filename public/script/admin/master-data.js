@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+    }
+});
+
 $(document).ready(function () {
     displayData(`${url}/create`, data.url5);
 });
@@ -64,27 +70,6 @@ function manageData(type, id = null) {
                 url: `${url}/${id}`,
                 data: {
                     type: "post"
-                },
-                dataType: "json",
-                success: function (response) {
-                    Toast.fire({
-                        icon: "success",
-                        title: response.message
-                    });
-
-                    displayData(`${url}/create`, data.url5);
-                },
-                error: function (err) {
-                    console.log(err)
-                }
-            });
-            break;
-        case "takeout":
-            $.ajax({
-                type: "patch",
-                url: `${url}/${id}`,
-                data: {
-                    type: "takeout"
                 },
                 dataType: "json",
                 success: function (response) {
@@ -174,6 +159,11 @@ function handleError(err, err_log, type) {
 function fetchData(target, data) {
     switch (target) {
         case "md-shooting-field":
+            $("#id").val(data.id);
+            $("#name").val(data.name);
+            $("#code").val(data.code);
+            break;
+        case "md-item-category":
             $("#id").val(data.id);
             $("#name").val(data.name);
             $("#code").val(data.code);
