@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers\Admin\MasterData;
 
-use App\Helpers\GeneralHelper;
 use App\Http\Controllers\Controller;
-use App\Models\MasterData\ShootingField;
-use App\Services\MasterData\ShootingFieldService;
+use App\Models\MasterData\WeaponCaliber;
+use App\Services\MasterData\WeaponCaliberService;
 use Illuminate\Http\Request;
 
-class ShootingFieldController extends Controller
+class WeaponCaliberController extends Controller
 {
+    protected $weaponCaliberService;
 
-    protected $shootingFieldService;
-
-    public function __construct(ShootingFieldService $shootingFieldService)
+    public function __construct(WeaponCaliberService $weaponCaliberService)
     {
-        $this->shootingFieldService = $shootingFieldService;
+        $this->weaponCaliberService = $weaponCaliberService;
     }
 
     /**
@@ -24,7 +22,7 @@ class ShootingFieldController extends Controller
     public function index()
     {
         // $id = GeneralHelper::generateNanoId();
-        return view('admin.master-data.shooting-field.index');
+        return view('admin.master-data.weapon-caliber.index');
     }
 
     /**
@@ -32,8 +30,8 @@ class ShootingFieldController extends Controller
      */
     public function create()
     {
-        $data = $this->shootingFieldService->getDataTable();
-        return view('admin.master-data.shooting-field.display', ["data" => $data]);
+        $data = $this->weaponCaliberService->getDataTable();
+        return view('admin.master-data.weapon-caliber.display', ["data" => $data]);
     }
 
     /**
@@ -41,12 +39,12 @@ class ShootingFieldController extends Controller
      */
     public function store(Request $request)
     {
-        $shootingFieldRequest = new ShootingField();
-        $shootingFieldRequest->fill([
+        $WeaponCaliberRequest = new WeaponCaliber();
+        $WeaponCaliberRequest->fill([
             'name' => $request->name
         ]);
 
-        $data = $this->shootingFieldService->createData($shootingFieldRequest);
+        $data = $this->weaponCaliberService->createData($WeaponCaliberRequest);
         return response()->json([
             'data' => $data,
             'message' => 'Berhasil menambahkan data ' . $data->name,
@@ -59,7 +57,7 @@ class ShootingFieldController extends Controller
      */
     public function show(string $id)
     {
-        $data = $this->shootingFieldService->getData((int) $id);
+        $data = $this->weaponCaliberService->getData((int) $id);
         return response()->json([
             'data' => $data['data'],
             'message' =>  $data['error'] == true ? $data['errorMessage'] : 'success',
@@ -79,15 +77,15 @@ class ShootingFieldController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $shootingFieldRequest = new ShootingField();
-        $shootingFieldRequest->fill([
+        $WeaponCaliberRequest = new WeaponCaliber();
+        $WeaponCaliberRequest->fill([
             'name' => $request->name
         ]);
 
-        $data = $this->shootingFieldService->updateData($shootingFieldRequest, (int) $id);
+        $data = $this->weaponCaliberService->updateData($WeaponCaliberRequest, (int) $id);
         return response()->json([
             'data' => $data['data'],
-            'message' =>  $data['error'] == true ? $data['errorMessage'] : 'Berhasil mengubah data  ' . $shootingFieldRequest->name,
+            'message' =>  $data['error'] == true ? $data['errorMessage'] : 'Berhasil mengubah data  ' . $WeaponCaliberRequest->name,
             'status' =>  $data['error'] == true ? 500 : 200,
         ], $data['error'] == true ? 500 : 200);
     }
@@ -97,10 +95,10 @@ class ShootingFieldController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = $this->shootingFieldService->deleteData((int) $id);
+        $data = $this->weaponCaliberService->deleteData((int) $id);
         return response()->json([
             'data' => $data['data'],
-            'message' => $data['error'] == true ? $data['errorMessage'] : 'Berhasil menghapus data bidang tembak',
+            'message' => $data['error'] == true ? $data['errorMessage'] : 'Berhasil menghapus data kaliber senjata',
             'status' => $data['error'] == true ? 500 : 200
         ], $data['error'] == true ? 500 : 200);
     }

@@ -217,3 +217,33 @@ function fetchData(target, data) {
             break;
     }
 }
+
+function handleSectionForm(type) {
+
+    let idActive = $('#section-sign').find(".active").attr("id")
+    let getIterationArray = idActive.split("-")
+    let lenghtIterationArray = getIterationArray.length
+    let getIteration = getIterationArray[lenghtIterationArray-1]
+
+    if(type === 'next'){
+        if(getIteration !== '3'){
+            $(`#${idActive}`).removeClass('active text-white bg-primary')
+            $(`#${idActive}`).addClass('bg-light')
+            $(`#card-form-${parseInt(getIteration)+1}`).removeClass('bg-light')
+            $(`#card-form-${parseInt(getIteration)+1}`).addClass('active text-white bg-primary')
+            $(`#form-${getIteration}`).addClass('d-none')
+            $(`#form-${parseInt(getIteration)+1}`).removeClass('d-none')
+        }
+    }else{
+        if(getIteration !== '1'){
+            $(`#${idActive}`).removeClass('active text-white bg-primary')
+            $(`#${idActive}`).addClass('bg-light')
+            $(`#card-form-${parseInt(getIteration)-1}`).removeClass('bg-light')
+            $(`#card-form-${parseInt(getIteration)-1}`).addClass('active text-white bg-primary')
+            $(`#form-${getIteration}`).addClass('d-none')
+            $(`#form-${parseInt(getIteration)-1}`).removeClass('d-none')
+        }
+    }
+
+
+}

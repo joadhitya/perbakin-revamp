@@ -99,13 +99,45 @@
                     onclick="manageData('save')"><i class="fe fe-check fe-16"></i> Submit</button>
             </div>
         </div>
-    </form> --}} <div class="card my-4">
+    </form> --}}
+    <div class="card my-4">
         <div class="card-header">
             <strong>Validation</strong>
         </div>
         <div class="card-body">
             <form id="example-form" action="#">
-                <div>
+                <div id="section-sign" class="row">
+                    <div class="col-md-2">
+                        <div id='card-form-1' class="card shadow text-white bg-primary active">
+                            <div class="card-body p-3">
+                                <div>1. Form 01</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div id='card-form-2' class="card shadow bg-light">
+                            <div class="card-body p-3">
+                                <div>2. Form 02</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div id='card-form-3' class="card shadow bg-light">
+                            <div class="card-body p-3">
+                                <div>3. Form 03</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-primary mr-1 float-right text-uppercase"
+                            onclick="handleSectionForm('next')"><i class="fe fe-arrow-right"></i> Next</button>
+                        <button type="button" class="btn btn-sm btn-warning mr-1 float-right text-uppercase"
+                            onclick="handleSectionForm('back')"><i class="fe fe-arrow-left"></i> Back</button>
+                    </div>
+                </div>
+                <div id='form-1'>
                     <h3>Account</h3>
                     <section>
                         <div class="form-group">
@@ -157,6 +189,12 @@
                         <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label
                             for="acceptTerms">I agree with the Terms and Conditions.</label>
                     </section>
+                </div>
+                <div id='form-2' class="d-none">
+                    <div>test 2</div>
+                </div>
+                <div id='form-3' class="d-none">
+                    <div>test 3</div>
                 </div>
             </form>
         </div> <!-- .card-body -->

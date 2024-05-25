@@ -3,22 +3,22 @@
 namespace App\Repositories\MasterData;
 
 use App\Models\General\ModelDelivery;
-use App\Models\MasterData\ShootingField;
+use App\Models\MasterData\WeaponCaliber;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 
-class ShootingFieldRepository implements ShootingFieldRepositoryInterface
+class WeaponCaliberRepository implements WeaponCaliberRepositoryInterface
 {
     public function getAllData(): Collection
     {
-        return ShootingField::all();
+        return WeaponCaliber::all();
     }
 
     public function getDataByID(int $id): ModelDelivery
     {
         $modelDelivery = new ModelDelivery();
         try{
-            $data = ShootingField::findOrFail($id);
+            $data = WeaponCaliber::findOrFail($id);
             $modelDelivery->fill(
                 [
                     'error' => false,
@@ -37,11 +37,11 @@ class ShootingFieldRepository implements ShootingFieldRepositoryInterface
         }
     }
 
-    public function createData(ShootingField $data): ModelDelivery
+    public function createData(WeaponCaliber $data): ModelDelivery
     {
         $modelDelivery = new ModelDelivery();
         try{
-            $dataSaved = ShootingField::create($data->toArray());
+            $dataSaved = WeaponCaliber::create($data->toArray());
             $modelDelivery->fill(
                 [
                     'error' => false,
@@ -60,7 +60,7 @@ class ShootingFieldRepository implements ShootingFieldRepositoryInterface
         }
     }
 
-    public function updateData(ShootingField $data, $dataRequest): ModelDelivery
+    public function updateData(WeaponCaliber $data, $dataRequest): ModelDelivery
     {
         $modelDelivery = new ModelDelivery();
         try {
@@ -83,7 +83,7 @@ class ShootingFieldRepository implements ShootingFieldRepositoryInterface
         }
     }
 
-    public function deleteData(ShootingField $data): ModelDelivery
+    public function deleteData(WeaponCaliber $data): ModelDelivery
     {
         $modelDelivery = new ModelDelivery();
         try {

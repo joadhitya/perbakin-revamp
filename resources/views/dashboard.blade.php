@@ -17,7 +17,7 @@
 </x-app-layout> --}}
 
 @extends('admin.layouts.master')
-@section('title', 'Dashboard Boemisora')
+@section('title', 'Dashboard Perbakin')
 @section('content')
     <div class="col-md-12 ">
         <div class="card shadow">
